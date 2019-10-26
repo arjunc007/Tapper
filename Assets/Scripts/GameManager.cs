@@ -66,9 +66,9 @@ public class GameManager : MonoBehaviour
     {
         scoreText.text = (++score).ToString();
 
-        if (score % 10 == 0 && score > 0)
+        if (score % 5 == 0 && score > 0)
         {
-            buttonFrequency = Mathf.Max(0.25f, buttonFrequency - 0.2f);
+            buttonFrequency = Mathf.Max(0.4f, buttonFrequency - 0.2f);
         }
     }
 
