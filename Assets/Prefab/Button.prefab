@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 76100153006047556}
   - component: {fileID: 76100153006047559}
   - component: {fileID: 1300001725}
-  - component: {fileID: 2332512575731201419}
+  - component: {fileID: 1301142779183475757}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -148,8 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4da2433d1677624fac71d3564d2559b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 3
---- !u!95 &2332512575731201419
+  lifetime: 2
+  particles: {fileID: 3022107746506282683, guid: f9e7fc0337e13a4469d52c657390d5ad,
+    type: 3}
+--- !u!95 &1301142779183475757
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

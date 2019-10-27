@@ -9,6 +9,9 @@ public class Button : MonoBehaviour
     [SerializeField]
     private float lifetime = 0;
 
+    [SerializeField]
+    private GameObject particles;
+
     private int ButtonPressed;
     private int maxClicks = 0;
     private TextMeshProUGUI buttonText;
@@ -17,6 +20,7 @@ public class Button : MonoBehaviour
 
     private float timer = 0;
     private bool dying = false;
+    private float u = 50;
 
     private void Start()
     {
@@ -40,7 +44,8 @@ public class Button : MonoBehaviour
 
         if(dying)
         {
-            transform.localPosition += new Vector3(0, -50 * timer + 0.5f * 10 * timer * timer , 0);
+            transform.localPosition += new Vector3(0, u * Time.deltaTime - 0.5f * 200 * Time.deltaTime * Time.deltaTime , 0);
+            u -= 200 * Time.deltaTime;
         }
         else if(timer > lifetime)
         {
@@ -50,6 +55,9 @@ public class Button : MonoBehaviour
 
     public void ButtonClicked()
     {
+        if (dying)
+            return;
+
         timer = 0;
         ButtonPressed--;
 
@@ -84,7 +92,10 @@ public class Button : MonoBehaviour
     private void OnDestroy()
     {
         if(ButtonPressed == 0 && timer < lifetime)
+        {
             GameManager.instance.IncrementScore();
+            Destroy(Instantiate(particles, transform.position + particles.transform.position, particles.transform.rotation, GameManager.instance.canvas), 1.0f);
+        }
         else
             GameManager.instance.DecrementScore();
     }
