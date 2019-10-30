@@ -20,7 +20,7 @@ public class Button : MonoBehaviour
 
     private float timer = 0;
     private bool dying = false;
-    private float u = 50;
+    private float u = 200;
 
     private void Start()
     {
@@ -44,8 +44,8 @@ public class Button : MonoBehaviour
 
         if(dying)
         {
-            transform.localPosition += new Vector3(0, u * Time.deltaTime - 0.5f * 200 * Time.deltaTime * Time.deltaTime , 0);
-            u -= 200 * Time.deltaTime;
+            transform.localPosition += new Vector3(0, u * Time.deltaTime - 0.5f * 1000 * Time.deltaTime * Time.deltaTime , 0);
+            u -= 1000 * Time.deltaTime;
         }
         else if(timer > lifetime)
         {
@@ -64,6 +64,7 @@ public class Button : MonoBehaviour
         if (ButtonPressed > 0)
         {
             buttonText.text = ButtonPressed.ToString();
+            anim.SetTrigger("Pressed");
         }
         else if(ButtonPressed < 0)
         {
@@ -77,7 +78,7 @@ public class Button : MonoBehaviour
                 img.color = c;
 
             buttonText.gameObject.SetActive(false);
-            Destroy(gameObject, 0.3f);
+            Destroy(gameObject, 0.2f);
         }
     }
 
